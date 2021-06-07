@@ -1,0 +1,119 @@
+{
+    "type": "object",
+    "properties": {
+        "logger": {
+            "type": "object",
+            "default": {},
+            "env": "TEMPLATE_LOGGER",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "default": "",
+                    "env": "TEMPLATE_LOGGER_NAME",
+                    "minLength": 0,
+                    "maxLength": 32
+                },
+                "levels": {
+                    "type": "array",
+                    "default": ["critical","log","error","warn","debug","verbose"],
+                    "env": "TEMPLATE_LOGGER_LEVELS",
+                    "items": {
+                        "type": "string",
+                        "enum": ["critical","log","error","warn","debug","verbose"]
+                    },
+                    "minItems": 0,
+                    "maxItems": 6
+                },
+                "bindings": {
+                    "type": "object",
+                    "default": {},
+                    "env": "TEMPLATE_LOGGER_BINDINGS"
+                },
+                "output": {
+                    "type": "object",
+                    "default": {},
+                    "env": "TEMPLATE_LOGGER_OUTPUT",
+                    "properties": {
+                        "timestamp": {
+                            "type": "string",
+                            "default": "full",
+                            "env": "TEMPLATE_LOGGER_OUTPUT_TIMESTAMP",
+                            "enum": ["full","short","unix","none"]
+                        },
+                        "levels": {
+                            "type": "array",
+                            "default": ["critical","log","error","warn","debug","verbose"],
+                            "env": "TEMPLATE_LOGGER_OUTPUT_LEVELS",
+                            "items": {
+                                "type": "string",
+                                "enum": ["critical","log","error","warn","debug","verbose"]
+                            },
+                            "minItems": 0,
+                            "maxItems": 6
+                        },
+                        "bindings": {
+                            "type": "string",
+                            "default": "bracket",
+                            "env": "TEMPLATE_LOGGER_OUTPUT_BINDINGS",
+                            "enum": ["square","bracket","none"]
+                        }
+                    },
+                    "required": [
+                        "timestamp",
+                        "levels",
+                        "bindings"
+                    ]
+                }
+            },
+            "required": [
+                "name",
+                "levels",
+                "bindings",
+                "output"
+            ]
+        },
+        "api": {
+            "type": "object",
+            "default": {},
+            "env": "TEMPLATE_API",
+            "properties": {
+                "enable": {
+                    "type": "boolean",
+                    "default": false,
+                    "env": "TEMPLATE_API_ENABLE"
+                },
+                "hostname": {
+                    "type": "string",
+                    "default": "localhost",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "env": "TEMPLATE_API_HOSTNAME",
+                    "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
+                },
+                "port": {
+                    "type": "integer",
+                    "default": 3001,
+                    "env": "TEMPLATE_API_PORT",
+                    "minimum": 1
+                },
+                "prefix": {
+                    "type": "string",
+                    "default": "/api",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "env": "TEMPLATE_API_PREFIX",
+                    "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
+                }
+            },
+            "required": [
+                "enable",
+                "hostname",
+                "port",
+                "prefix"
+            ]
+        }
+    },
+    "required": [
+        "logger"
+    ]
+}

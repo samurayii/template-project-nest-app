@@ -1,0 +1,16 @@
+[logger]
+    name = ""
+    levels = ["critical","log","error","warn","debug","verbose"]
+    [logger.bindings]
+        key1 = "key1-val"
+        key2 = "key2-val"
+    [logger.output]
+        timestamp = "full"
+        levels = ["critical","log","error","warn","debug","verbose"]
+        bindings = "bracket"
+
+[api]                       # настройка API
+    enable = false          # активация API
+    hostname = "localhost"  # хост          
+    port = 3001             # порт
+    prefix = "/api"         # префикс

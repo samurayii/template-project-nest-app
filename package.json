@@ -1,0 +1,108 @@
+{
+    "name": "template",
+    "version": "0.0.1-template",
+    "description": "Template for nodejs app with nestjs",
+    "main": "app.js",
+    "docker_image": "samuray/template",
+    "scripts": {
+        "up": "ncu --reject rxjs && ncu -u --reject rxjs && rimraf ./package-lock.json && npm i && ncu --reject rxjs",
+        "ncu": "ncu --reject rxjs",
+        "pub": "npm run build && npm publish ./dist && rimraf ./dist",
+        "build": "rimraf ./dist && tsc && json-key-remover && files-copier -e build",
+        "start": "node ./dist/app.js --config ./config.toml",
+        "start:dev": "ts-node ./src/app.ts --config ./config.toml",
+        "test": "jest --config ./tests/e2e.config.json",
+        "docker:build": "npm run build && files-copier -e docker:build && ts-node ./docker-build/build.ts",
+        "docker:push:version": "ts-node ./docker-build/push_version.ts",
+        "docker:push:latest": "ts-node ./docker-build/push_latest.ts",
+        "docker:tag": "ts-node ./docker-build/tag.ts",
+        "docker": "npm run docker:build && npm run docker:tag && npm run docker:push:version && npm run docker:push:latest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samurayii/template-project-ts.git"
+    },
+    "keywords": [
+        "templates",
+        "nest",
+        "typescript"
+    ],
+    "author": "Nuzhnov A.A.",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/samurayii/template-project-ts/issues"
+    },
+    "homepage": "https://github.com/samurayii/template-project-ts.git#readme",
+    "devDependencies": {
+        "@nestjs/testing": "^7.6.17",
+        "@types/chalk": "^2.2.0",
+        "@types/clone": "^2.1.0",
+        "@types/jest": "^26.0.23",
+        "@types/node": "^15.12.2",
+        "@types/supertest": "^2.0.11",
+        "@typescript-eslint/eslint-plugin": "^4.26.1",
+        "@typescript-eslint/parser": "^4.26.1",
+        "eslint": "^7.28.0",
+        "files-copier": "^0.1.1",
+        "jest": "^27.0.4",
+        "json-key-remover": "^0.0.3",
+        "npm-check-updates": "^11.6.0",
+        "rimraf": "^3.0.2",
+        "supertest": "^6.1.3",
+        "ts-jest": "^27.0.3",
+        "ts-node": "^10.0.0",
+        "typescript": "^4.3.2"
+    },
+    "remover": {
+        "target": "./package.json",
+        "destination": "./dist/package.json",
+        "remove": [
+            "remover",
+            "devDependencies",
+            "main",
+            "scripts",
+            "keywords",
+            "homepage",
+            "bugs",
+            "copier"
+        ]
+    },
+    "copier": {
+        "build": {
+            "rewrite": true,
+            "copy": [
+                {
+                    "from": "./package-lock.json",
+                    "to": "./dist/package-lock.json"
+                }
+            ]
+        },
+        "docker:build": {
+            "rewrite": true,
+            "copy": [
+                {
+                    "from": "./dist",
+                    "to": "./docker-build/app"
+                },
+                {
+                    "from": "./dist/package.json",
+                    "to": "./docker-build/package.json"
+                }
+            ]
+        }
+    },
+    "dependencies": {
+        "@nestjs/common": "^7.6.17",
+        "@nestjs/core": "^7.6.17",
+        "@nestjs/platform-express": "^7.6.17",
+        "ajv": "^8.6.0",
+        "chalk": "^4.1.1",
+        "clone": "^2.1.2",
+        "commander": "^7.2.0",
+        "json-from-default-schema": "^1.0.0",
+        "jtomler": "^1.0.1",
+        "logger-flx": "^0.6.8",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^6.6.7"
+    }
+}
