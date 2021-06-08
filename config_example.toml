@@ -1,13 +1,13 @@
 [logger]
-    name = ""
-    levels = ["critical","log","error","warn","debug","verbose"]
-    [logger.bindings]
+    name = ""                                                           # имя логгера
+    levels = ["critical","log","error","warn","debug","verbose"]        # уровни логирования
+    [logger.bindings]                                                   # дополнительные ключи
         key1 = "key1-val"
         key2 = "key2-val"
-    [logger.output]
-        timestamp = "full"
-        levels = ["critical","log","error","warn","debug","verbose"]
-        bindings = "bracket"
+    [logger.output]                                                     # настройка отображения
+        timestamp = "full"                                              # вывод времени full, short, unix и none
+        levels = ["critical","log","error","warn","debug","verbose"]    # вывод типов
+        bindings = "bracket"                                            # отображение ключей square, bracket, none
 
 [api]                       # настройка API
     enable = false          # активация API
