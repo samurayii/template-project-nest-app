@@ -7,6 +7,7 @@
     "scripts": {
         "up": "ncu --reject rxjs && ncu -u --reject rxjs && rimraf ./package-lock.json && npm i && ncu --reject rxjs",
         "ncu": "ncu --reject rxjs",
+        "cz": "git add . && git cz",
         "pub": "npm run build && npm publish ./dist && rimraf ./dist",
         "build": "rimraf ./dist && tsc && json-key-remover && files-copier -e build",
         "start": "node ./dist/app.js --config ./config.toml",
@@ -42,6 +43,8 @@
         "@types/supertest": "^2.0.11",
         "@typescript-eslint/eslint-plugin": "^4.26.1",
         "@typescript-eslint/parser": "^4.26.1",
+        "commitizen": "^4.2.4",
+        "cz-customizable": "^6.3.0",
         "eslint": "^7.28.0",
         "files-copier": "^0.1.1",
         "jest": "^27.0.4",
@@ -89,6 +92,14 @@
                     "to": "./docker-build/package.json"
                 }
             ]
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-customizable"
+        },
+        "cz-customizable": {
+            "config": "_common/configs/commitizen.js"
         }
     },
     "dependencies": {
