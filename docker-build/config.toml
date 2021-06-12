@@ -1,4 +1,9 @@
 [logger]
+    levels = ["critical","log","error","warn"]
     [logger.output]
         timestamp = "none"
         bindings = "none"
+        levels = ["critical","log","error","warn"]
+
+[api]
+    enable = true
