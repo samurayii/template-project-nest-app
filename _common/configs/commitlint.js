@@ -2,7 +2,6 @@ module.exports = {
     rules: {
         // Тело коммита должно начинаться с пустой строки
         "body-leading-blank": [2, "always"],
-
         // Максимальная длина заголовка 72 символа
         "header-max-length": [2, "always", 72],
 
