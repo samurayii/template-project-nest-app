@@ -41,7 +41,6 @@ module.exports = {
             name: "test:      Добавление тестов" 
         }
     ],
-
     messages: {
         type: "Какие изменения вы вносите?",
         scope: "\nВыберите ОБЛАСТЬ, которую вы изменили (опционально):",
@@ -50,7 +49,6 @@ module.exports = {
         body: "Напишите ПОДРОБНОЕ описание (опционально). Используйте \"|\" для новой строки:\n",
         confirmCommit: "Вас устраивает получившийся коммит?"
     },
-
     skipQuestions: ["footer", "breaking"],
     allowCustomScopes: true,
     subjectLimit: 72
