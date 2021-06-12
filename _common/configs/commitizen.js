@@ -1,5 +1,4 @@
 module.exports = {
-    // Добавим описание на русском языке ко всем типам
     types: [
         {
             value: "build",
@@ -43,36 +42,16 @@ module.exports = {
         }
     ],
 
-    // Область. Она характеризует фрагмент кода, которую затронули изменения
-    scopes: [
-        { name: "components" },
-        { name: "tutorial" },
-        { name: "catalog" },
-        { name: "product" }
-    ],
-
-    // Поменяем дефолтные вопросы
     messages: {
         type: "Какие изменения вы вносите?",
         scope: "\nВыберите ОБЛАСТЬ, которую вы изменили (опционально):",
-        // Спросим если allowCustomScopes в true
         customScope: "Укажите свою ОБЛАСТЬ:",
         subject: "Напишите КОРОТКОЕ описание в ПОВЕЛИТЕЛЬНОМ наклонении:\n",
-        body: "Напишите ПОДРОБНОЕ описание (опционально). Используйте "|" для новой строки:\n",
-        breaking: "Список BREAKING CHANGES (опционально):\n",
-        footer:"Место для мета данных (тикетов, ссылок и остального). Например: SECRETMRKT-700, SECRETMRKT-800:\n",
+        body: "Напишите ПОДРОБНОЕ описание (опционально). Используйте \"|\" для новой строки:\n",
         confirmCommit: "Вас устраивает получившийся коммит?"
     },
 
-    // Разрешим собственную ОБЛАСТЬ
+    skipQuestions: ["footer", "breaking"],
     allowCustomScopes: true,
-
-    // Запрет на Breaking Changes
-    allowBreakingChanges: false,
-
-    // Префикс для нижнего колонтитула
-    footerPrefix: "МЕТА ДАННЫЕ:",
-
-    // limit subject length
     subjectLimit: 72
 };
