@@ -19,6 +19,14 @@ describe("Healthcheck", () => {
 
     });
 
+    it("GET /", () => {
+
+        request(app.getHttpServer())
+        .get("/")
+        .expect(200);
+
+    });
+
     it("GET /_ping", () => {
 
         request(app.getHttpServer())

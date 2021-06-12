@@ -8,7 +8,7 @@ export class Healthcheck {
         return "Healthy";
     }
 
-    @Get("/_ping")
+    @Get(["/_ping", "/"])
     ping(): string {
         return "pong 🎾";
     }
