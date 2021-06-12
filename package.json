@@ -5,9 +5,12 @@
     "main": "app.js",
     "docker_image": "samuray/template",
     "scripts": {
+        "prepare": "husky install && npx husky add .husky/pre-commit \"npm run validate\"",
         "up": "ncu --reject rxjs && ncu -u --reject rxjs && rimraf ./package-lock.json && npm i && ncu --reject rxjs",
         "ncu": "ncu --reject rxjs",
         "cz": "git add . && git cz",
+        "validate": "npm run validate:commit",
+        "validate:commit": "commitlint --config _common/configs/commitlint.js --from HEAD~1 --to HEAD --verbose",
         "pub": "npm run build && npm publish ./dist && rimraf ./dist",
         "build": "rimraf ./dist && tsc && json-key-remover && files-copier -e build",
         "start": "node ./dist/app.js --config ./config.toml",
@@ -35,6 +38,7 @@
     },
     "homepage": "https://github.com/samurayii/template-project-ts.git#readme",
     "devDependencies": {
+        "@commitlint/cli": "^12.1.4",
         "@nestjs/testing": "^7.6.17",
         "@types/chalk": "^2.2.0",
         "@types/clone": "^2.1.0",
@@ -47,6 +51,7 @@
         "cz-customizable": "^6.3.0",
         "eslint": "^7.28.0",
         "files-copier": "^0.1.1",
+        "husky": "^6.0.0",
         "jest": "^27.0.4",
         "json-key-remover": "^0.0.3",
         "npm-check-updates": "^11.6.0",
