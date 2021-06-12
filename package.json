@@ -10,7 +10,7 @@
         "ncu": "ncu --reject rxjs",
         "cz": "git add . && git cz",
         "validate": "npm run validate:commit",
-        "validate:commit": "commitlint --config _common/configs/commitlint.js --from HEAD~1 --to HEAD --verbose",
+        "validate:commit": "commitlint --config _common/configs/commitlint.js -env HUSKY_GIT_PARAMS --verbose",
         "pub": "npm run build && npm publish ./dist && rimraf ./dist",
         "build": "rimraf ./dist && tsc && json-key-remover && files-copier -e build",
         "start": "node ./dist/app.js --config ./config.toml",
