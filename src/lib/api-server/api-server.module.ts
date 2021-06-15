@@ -1,15 +1,14 @@
 import { Module } from "@nestjs/common";
 import { LoggerModule } from "../logger/logger.module";
-import { ConfigModule } from "../config/config.module";
-import { Healthcheck } from "../../http/controllers/healthcheck";
+import { HealthcheckController } from "../../http/controllers/healthcheck";
+import { PingController } from "../../http/controllers/ping";
 
 export * from "./api-server.interfaces";
 
 @Module({
     imports: [
-        ConfigModule.register("api"), 
         LoggerModule.register("api-server")
     ],
-    controllers: [Healthcheck]
+    controllers: [HealthcheckController, PingController]
 })
 export class ApiServerModule {}

@@ -9,8 +9,21 @@
         levels = ["critical","log","error","warn","debug","verbose"]    # вывод типов
         bindings = "bracket"                                            # отображение ключей square, bracket, none
 
-[api]                       # настройка API
-    enable = false          # активация API
+[api]                       # настройка API сервера
+    enable = false          # активация
     hostname = "localhost"  # хост          
     port = 3001             # порт
     prefix = "/api"         # префикс
+
+[web]
+    enable = false          # активация Web сервера
+    hostname = "localhost"  # хост          
+    port = 3000             # порт
+    prefix = "/"            # префикс
+    [web.static]                # настройка статического контента
+        root_path = "static"    # root папка
+        exclude = []            # игнорируемые пути в формате wildcard
+        index_redirect = true   # выдать индекс при запросе "/"
+        index = "index.html"    # index по умолчанию
+
+    

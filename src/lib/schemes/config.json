@@ -99,7 +99,7 @@
                 "prefix": {
                     "type": "string",
                     "default": "/api",
-                    "minLength": 1,
+                    "minLength": 0,
                     "maxLength": 32,
                     "env": "TEMPLATE_API_PREFIX",
                     "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
@@ -111,9 +111,94 @@
                 "port",
                 "prefix"
             ]
+        },
+        "web": {
+            "type": "object",
+            "default": {},
+            "env": "TEMPLATE_WEB",
+            "properties": {
+                "enable": {
+                    "type": "boolean",
+                    "default": false,
+                    "env": "TEMPLATE_WEB_ENABLE"
+                },
+                "hostname": {
+                    "type": "string",
+                    "default": "localhost",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "env": "TEMPLATE_WEB_HOSTNAME",
+                    "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
+                },
+                "port": {
+                    "type": "integer",
+                    "default": 3000,
+                    "env": "TEMPLATE_WEB_PORT",
+                    "minimum": 1
+                },
+                "prefix": {
+                    "type": "string",
+                    "default": "",
+                    "minLength": 0,
+                    "maxLength": 32,
+                    "env": "TEMPLATE_WEB_PREFIX",
+                    "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
+                },
+                "static": {
+                    "type": "object",
+                    "default": {},
+                    "env": "TEMPLATE_WEB_STATIC",
+                    "properties": {
+                        "root_path": {
+                            "type": "string",
+                            "default": "static",
+                            "env": "TEMPLATE_WEB_STATIC_ROOT_PATH",
+                            "minLength": 0,
+                            "maxLength": 128
+                        },
+                        "exclude": {
+                            "type": "array",
+                            "default": [],
+                            "env": "TEMPLATE_WEB_STATIC_EXCLUDE",
+                            "items": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                            },
+                            "minItems": 0
+                        },
+                        "index_redirect": {
+                            "type": "boolean",
+                            "default": true,
+                            "env": "TEMPLATE_WEB_STATIC_INDEX_REDIRECT"
+                        },
+                        "index": {
+                            "type": "string",
+                            "default": "index.html",
+                            "env": "TEMPLATE_WEB_STATIC_INDEX",
+                            "pattern": "^[-a-zA-Z0-9_\\.]{1,128}$"
+                        }
+                    },
+                    "required": [
+                        "root_path",
+                        "exclude",
+                        "index_redirect",
+                        "index"
+                    ]
+                }
+            },
+            "required": [
+                "enable",
+                "hostname",
+                "port",
+                "prefix",
+                "static"
+            ]
         }
     },
     "required": [
-        "logger"
+        "logger",
+        "api",
+        "web"
     ]
 }

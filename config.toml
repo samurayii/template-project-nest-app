@@ -3,3 +3,12 @@
 
 [api]
     enable = true
+
+[web]
+    enable = true
+    prefix = "/"
+    [web.static]
+        root_path = "src/static"
+        exclude = ["/api*"]
+        index = "ddd"
+        index_redirect = false

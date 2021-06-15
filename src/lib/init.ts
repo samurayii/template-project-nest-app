@@ -83,4 +83,7 @@ if (!validate(config)) {
     process.exit(1);
 }
 
+config.web.prefix = config.web.prefix.replace(/^\//,"").replace(/\/$/, "");
+config.api.prefix = config.api.prefix.replace(/^\//,"").replace(/\/$/, "");
+
 export default config;

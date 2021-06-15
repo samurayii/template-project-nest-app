@@ -8,6 +8,11 @@ export const CONFIG_SERVICE_NAME = "CONFIG";
 @Module({})
 export class ConfigModule {
     static register(key_name: string): DynamicModule {
+
+        if (config[key_name] === undefined) {
+            throw new Error(`Request key "${key_name}" for config not found`);
+        }
+
         return {
             module: ConfigModule,
             providers: [{

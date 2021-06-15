@@ -19,7 +19,8 @@
         "declaration": false,
         "removeComments": true,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "typeRoots": ["src/types"]
     },
     "include": [
         "src/**/*"

@@ -41,7 +41,9 @@
         "@nestjs/testing": "^7.6.17",
         "@types/chalk": "^2.2.0",
         "@types/clone": "^2.1.0",
+        "@types/express": "^4.17.12",
         "@types/jest": "^26.0.23",
+        "@types/mime-types": "^2.1.0",
         "@types/node": "^15.12.2",
         "@types/supertest": "^2.0.11",
         "@typescript-eslint/eslint-plugin": "^4.26.1",
@@ -117,7 +119,9 @@
         "json-from-default-schema": "^1.0.0",
         "jtomler": "^1.0.1",
         "logger-flx": "^0.6.8",
+        "mime-types": "^2.1.31",
         "reflect-metadata": "^0.1.13",
-        "rxjs": "^6.6.7"
+        "rxjs": "^6.6.7",
+        "wildcard": "^2.0.0"
     }
 }
