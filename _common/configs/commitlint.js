@@ -13,6 +13,7 @@ module.exports = {
             [
                 "build",
                 "ci",
+                "dto",
                 "docs",
                 "feat",
                 "fix",
