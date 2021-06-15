@@ -1,7 +1,8 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { LoggerModule } from "../logger/logger.module";
 import { HealthcheckController } from "../../http/controllers/healthcheck";
 import { PingController } from "../../http/controllers/ping";
+import { LoggerMiddleware } from "../../http/middleware/logger.middleware";
 
 export * from "./api-server.interfaces";
 
@@ -11,4 +12,13 @@ export * from "./api-server.interfaces";
     ],
     controllers: [HealthcheckController, PingController]
 })
-export class ApiServerModule {}
+export class ApiServerModule implements NestModule {
+    configure(consumer: MiddlewareConsumer): void {
+        consumer
+        .apply(LoggerMiddleware)
+        .forRoutes({ 
+            path: "*", 
+            method: RequestMethod.GET 
+        });
+    }
+}
