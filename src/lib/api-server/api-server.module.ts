@@ -1,3 +1,4 @@
+import * as helmet from "helmet";
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { LoggerModule } from "../logger/logger.module";
 import { HealthcheckController } from "../../http/controllers/healthcheck";
@@ -15,7 +16,7 @@ export * from "./api-server.interfaces";
 export class ApiServerModule implements NestModule {
     configure(consumer: MiddlewareConsumer): void {
         consumer
-        .apply(LoggerMiddleware)
+        .apply(helmet(), LoggerMiddleware)
         .forRoutes({ 
             path: "*", 
             method: RequestMethod.GET 

@@ -1,5 +1,6 @@
 //import config from "../init";
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+import * as helmet from "helmet";
 import { StaticMiddleware } from "../../http/middleware/static.middleware";
 import { PingController } from "../../http/controllers/ping";
 import { LoggerModule } from "../logger/logger.module";
@@ -18,7 +19,7 @@ export * from "./static-server.interfaces";
 export class StaticServerModule implements NestModule {
     configure(consumer: MiddlewareConsumer): void {
         consumer
-        .apply(LoggerMiddleware, StaticMiddleware)
+        .apply(helmet(), LoggerMiddleware, StaticMiddleware)
         .forRoutes({ 
             path: "*", 
             method: RequestMethod.GET 
