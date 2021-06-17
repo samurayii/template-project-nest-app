@@ -14,6 +14,10 @@
     hostname = "localhost"  # хост          
     port = 3001             # порт
     prefix = "/api"         # префикс
+    [api.security]
+        cors = false
+        helmet = true
+        csurf = true
 
 [web]
     enable = false          # активация Web сервера
@@ -25,5 +29,8 @@
         exclude = []            # игнорируемые пути в формате wildcard
         index_redirect = true   # выдать индекс при запросе "/"
         index = "index.html"    # index по умолчанию
+    [web.security]
+        [web.security.helmet]
+            enable = true
 
     

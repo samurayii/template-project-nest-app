@@ -1,4 +1,4 @@
-//import config from "../init";
+import config from "../init";
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import * as helmet from "helmet";
 import { StaticMiddleware } from "../../http/middleware/static.middleware";
@@ -18,9 +18,15 @@ export * from "./static-server.interfaces";
 })
 export class StaticServerModule implements NestModule {
     configure(consumer: MiddlewareConsumer): void {
-        consumer
-        .apply(helmet(), LoggerMiddleware, StaticMiddleware)
-        .forRoutes({ 
+
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        const apply_list: Function[] = [LoggerMiddleware, StaticMiddleware];
+
+        if (config.web.security.helmet.enable === true) {
+            apply_list.unshift(helmet());
+        }
+
+        consumer.apply(...apply_list).forRoutes({ 
             path: "*", 
             method: RequestMethod.GET 
         });

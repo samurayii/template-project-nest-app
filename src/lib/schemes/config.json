@@ -103,13 +103,39 @@
                     "maxLength": 32,
                     "env": "TEMPLATE_API_PREFIX",
                     "pattern": "^(\/[a-zA-Z]{1}|)[-a-zA-Z0-9\/]{0,31}$"
+                },
+                "security": {
+                    "type": "object",
+                    "default": {},
+                    "env": "TEMPLATE_API_SECURITY",
+                    "properties": {
+                        "helmet": {
+                            "type": "object",
+                            "default": {},
+                            "env": "TEMPLATE_API_SECURITY_HELMET",
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "env": "TEMPLATE_API_SECURITY_HELMET_ENABLE"
+                                }
+                            },
+                            "required": [
+                                "enable"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "helmet"
+                    ]
                 }
             },
             "required": [
                 "enable",
                 "hostname",
                 "port",
-                "prefix"
+                "prefix",
+                "security"
             ]
         },
         "web": {
@@ -185,6 +211,31 @@
                         "index_redirect",
                         "index"
                     ]
+                },
+                "security": {
+                    "type": "object",
+                    "default": {},
+                    "env": "TEMPLATE_WEB_SECURITY",
+                    "properties": {
+                        "helmet": {
+                            "type": "object",
+                            "default": {},
+                            "env": "TEMPLATE_WEB_SECURITY_HELMET",
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "env": "TEMPLATE_WEB_SECURITY_HELMET_ENABLE"
+                                }
+                            },
+                            "required": [
+                                "enable"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "helmet"
+                    ]
                 }
             },
             "required": [
@@ -192,7 +243,8 @@
                 "hostname",
                 "port",
                 "prefix",
-                "static"
+                "static",
+                "security"
             ]
         }
     },

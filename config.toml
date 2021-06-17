@@ -12,3 +12,6 @@
         exclude = ["/api*"]
         index = "ddd"
         index_redirect = false
+    [web.security]
+        [web.security.helmet]
+            enable = true

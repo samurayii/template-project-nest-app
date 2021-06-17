@@ -3,4 +3,9 @@ export interface IApiServerConfig {
     hostname: string
     port: number
     prefix: string
+    security: {
+        helmet: {
+            enable: boolean
+        }
+    }
 }

@@ -8,5 +8,10 @@ export interface IWebServerConfig {
         exclude: string[]
         index_redirect: boolean
         index: string
-    }   
+    }
+    security: {
+        helmet: {
+            enable: boolean
+        }
+    }  
 }
