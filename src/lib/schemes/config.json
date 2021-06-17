@@ -123,10 +123,51 @@
                             "required": [
                                 "enable"
                             ]
+                        },
+                        "rate": {
+                            "type": "object",
+                            "default": {},
+                            "env": "TEMPLATE_API_SECURITY_RATE",
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_API_SECURITY_RATE_ENABLE"
+                                },
+                                "ttl": {
+                                    "type": "integer",
+                                    "default": 30,
+                                    "env": "TEMPLATE_API_SECURITY_RATE_TTL",
+                                    "minimum": 1
+                                },
+                                "limit": {
+                                    "type": "integer",
+                                    "default": 10,
+                                    "env": "TEMPLATE_API_SECURITY_RATE_LIMIT",
+                                    "minimum": 1
+                                },
+                                "ignore_agents": {
+                                    "type": "array",
+                                    "default": [],
+                                    "env": "TEMPLATE_API_SECURITY_RATE_IGNORE_AGENTS",
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "minItems": 0
+                                }
+                            },
+                            "required": [
+                                "enable",
+                                "ttl",
+                                "limit",
+                                "ignore_agents"
+                            ]
                         }
                     },
                     "required": [
-                        "helmet"
+                        "helmet",
+                        "rate"
                     ]
                 }
             },
@@ -231,10 +272,51 @@
                             "required": [
                                 "enable"
                             ]
+                        },
+                        "rate": {
+                            "type": "object",
+                            "default": {},
+                            "env": "TEMPLATE_WEB_SECURITY_RATE",
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_WEB_SECURITY_RATE_ENABLE"
+                                },
+                                "ttl": {
+                                    "type": "integer",
+                                    "default": 30,
+                                    "env": "TEMPLATE_WEB_SECURITY_RATE_TTL",
+                                    "minimum": 1
+                                },
+                                "limit": {
+                                    "type": "integer",
+                                    "default": 10,
+                                    "env": "TEMPLATE_WEB_SECURITY_RATE_LIMIT",
+                                    "minimum": 1
+                                },
+                                "ignore_agents": {
+                                    "type": "array",
+                                    "default": [],
+                                    "env": "TEMPLATE_WEB_SECURITY_RATE_IGNORE_AGENTS",
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "minItems": 0
+                                }
+                            },
+                            "required": [
+                                "enable",
+                                "ttl",
+                                "limit",
+                                "ignore_agents"
+                            ]
                         }
                     },
                     "required": [
-                        "helmet"
+                        "helmet",
+                        "rate"
                     ]
                 }
             },

@@ -15,9 +15,13 @@
     port = 3001             # порт
     prefix = "/api"         # префикс
     [api.security]
-        cors = false
-        helmet = true
-        csurf = true
+        [api.security.helmet]
+            enable = true
+        [api.security.rate_limit]
+            enable = false
+            ttl = 30
+            limit = 10
+            ignore_agents = []
 
 [web]
     enable = false          # активация Web сервера
@@ -32,5 +36,10 @@
     [web.security]
         [web.security.helmet]
             enable = true
+        [web.security.rate_limit]
+            enable = false
+            ttl = 30
+            limit = 10
+            ignore_agents = []
 
     

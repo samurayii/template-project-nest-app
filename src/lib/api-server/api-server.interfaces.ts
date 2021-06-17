@@ -7,5 +7,11 @@ export interface IApiServerConfig {
         helmet: {
             enable: boolean
         }
+        rate: {
+            enable: boolean
+            ttl: number
+            limit: number
+            ignore_agents: string[]
+        }
     }
-}
+}            
