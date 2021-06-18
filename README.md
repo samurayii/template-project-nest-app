@@ -1,3 +1,1 @@
-# Template app.
-
-template. [Документация](docs/README.md)
+# Template app

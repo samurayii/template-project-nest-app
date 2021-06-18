@@ -11,7 +11,7 @@
         "ncu": "ncu --reject rxjs",
         "cz": "git add . && git cz",
         "pub": "npm run build && npm publish ./dist && rimraf ./dist",
-        "build": "rimraf ./dist && tsc && json-key-remover && files-copier -e build",
+        "build": "rimraf ./dist && tsc --project ./tsconfig.json && json-key-remover && files-copier -e build",
         "start": "node ./dist/app.js --config ./config.toml",
         "start:dev": "ts-node ./src/app.ts --config ./config.toml",
         "test": "jest --config ./tests/e2e.config.json",
@@ -46,6 +46,8 @@
         "@types/jest": "^26.0.23",
         "@types/mime-types": "^2.1.0",
         "@types/node": "^15.12.2",
+        "@types/react": "^17.0.11",
+        "@types/react-dom": "^17.0.7",
         "@types/supertest": "^2.0.11",
         "@typescript-eslint/eslint-plugin": "^4.26.1",
         "@typescript-eslint/parser": "^4.26.1",
@@ -84,6 +86,10 @@
                 {
                     "from": "./package-lock.json",
                     "to": "./dist/package-lock.json"
+                },
+                {
+                    "from": "./src/static/index.html",
+                    "to": "./dist/static/index.html"
                 }
             ]
         },
@@ -118,7 +124,6 @@
         "chalk": "^4.1.1",
         "clone": "^2.1.2",
         "commander": "^7.2.0",
-        "csurf": "^1.11.0",
         "helmet": "^4.6.0",
         "json-from-default-schema": "^1.0.0",
         "jtomler": "^1.0.1",

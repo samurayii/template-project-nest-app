@@ -1,28 +1,23 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "resolveJsonModule": true,
-        "esModuleInterop": false,
-        "allowSyntheticDefaultImports": true,
-        "target": "es2017",
-        "noImplicitAny": true,
-        "moduleResolution": "node",
-        "sourceMap": false,
-        "outDir": "dist",
-        "baseUrl": ".",
         "paths": {
             "*": [
-                "node_modules/*",
-                "src/types/*"
+                "./node_modules/*"
             ]
         },
-        "declaration": false,
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "resolveJsonModule": true,
+        "target": "es2017",
         "removeComments": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "typeRoots": ["src/types"]
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "rootDir": "./src",
+        "typeRoots": ["./src/types"]
     },
-    "include": [
-        "src/**/*"
-    ]
+    "include": ["./src/**/*"]
 }
+
