@@ -14,24 +14,24 @@
     hostname = "localhost"  # хост          
     port = 3001             # порт
     prefix = "/api"         # префикс
-    [api.security]
-        [api.security.helmet]
-            enable = true
-        [api.security.rate_limit]
-            enable = false
-            ttl = 30
-            limit = 10
-            ignore_agents = []
+    [api.security]                  # настройка безопасности
+        [api.security.helmet]       # настройка helmet (пакет https://github.com/helmetjs/helmet)
+            enable = true           # активация helmet
+        [api.security.rate_limit]   # настройка ограничений количества запроса
+            enable = false          # активация ограничений
+            ttl = 30                # временное окно
+            limit = 10              # количество запросов
+            ignore_agents = []      # массив регулярных выражений агентов для игнорирования правил
         [api.security.cors]                                         # настройка CORS (пакет https://github.com/expressjs/cors)
-            enable = false
-            origin = "*"
-            methods = ["GET","HEAD","PUT","PATCH","POST","DELETE"]
-            allowed_headers = []
-            exposed_headers = []
-            credentials = false
-            preflight_continue = false
-            options_success_status = 204
-            max_age = 0
+            enable = false                                          # активация cors
+            origin = "*"                                            # допустимые домены
+            methods = ["GET","HEAD","PUT","PATCH","POST","DELETE"]  # допустимые методы
+            allowed_headers = []                                    # настройка Access-Control-Allow-Headers CORS заголовка
+            exposed_headers = []                                    # настройка Access-Control-Expose-Headers CORS заголовка
+            credentials = false                                     # настройка Access-Control-Allow-Credentials CORS заголовка
+            preflight_continue = false                              # передавать ответ CORS следующему обработчику
+            options_success_status = 204                            # код ответа для OPTIONS запроса
+            max_age = 0                                             # настройка Access-Control-Max-Age CORS заголовка
 
 [web]
     enable = false          # активация Web сервера
@@ -43,13 +43,21 @@
         exclude = []            # игнорируемые пути в формате wildcard
         index_redirect = true   # выдать индекс при запросе "/"
         index = "index.html"    # index по умолчанию
-    [web.security]
-        [web.security.helmet]
-            enable = true
-        [web.security.rate_limit]
-            enable = false
-            ttl = 30
-            limit = 10
-            ignore_agents = []
-
-    
+    [web.security]                  # настройка безопасности
+        [web.security.helmet]       # настройка helmet (пакет https://github.com/helmetjs/helmet)
+            enable = true           # активация helmet
+        [web.security.rate_limit]   # настройка ограничений количества запроса
+            enable = false          # активация ограничений
+            ttl = 30                # временное окно
+            limit = 10              # количество запросов
+            ignore_agents = []      # массив регулярных выражений агентов для игнорирования правил
+        [web.security.cors]                                         # настройка CORS (пакет https://github.com/expressjs/cors)
+            enable = false                                          # активация cors
+            origin = "*"                                            # допустимые домены
+            methods = ["GET","HEAD","PUT","PATCH","POST","DELETE"]  # допустимые методы
+            allowed_headers = []                                    # настройка Access-Control-Allow-Headers CORS заголовка
+            exposed_headers = []                                    # настройка Access-Control-Expose-Headers CORS заголовка
+            credentials = false                                     # настройка Access-Control-Allow-Credentials CORS заголовка
+            preflight_continue = false                              # передавать ответ CORS следующему обработчику
+            options_success_status = 204                            # код ответа для OPTIONS запроса
+            max_age = 0                                             # настройка Access-Control-Max-Age CORS заголовка
