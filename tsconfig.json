@@ -3,7 +3,8 @@
         "module": "commonjs",
         "paths": {
             "*": [
-                "./node_modules/*"
+                "./node_modules/*",
+                "src/types/*"
             ]
         },
         "moduleResolution": "node",

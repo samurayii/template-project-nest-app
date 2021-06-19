@@ -86,4 +86,12 @@ if (!validate(config)) {
 config.web.prefix = config.web.prefix.replace(/^\//,"").replace(/\/$/, "");
 config.api.prefix = config.api.prefix.replace(/^\//,"").replace(/\/$/, "");
 
+if (config.web.security.cors.max_age <= 0) {
+    delete config.web.security.cors.max_age;
+}
+
+if (config.api.security.cors.max_age <= 0) {
+    delete config.api.security.cors.max_age;
+}
+
 export default config;

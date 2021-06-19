@@ -24,6 +24,20 @@ const bootstrap = async () => {
             });
 
             api_server.setGlobalPrefix(config.api.prefix);
+
+            if (config.api.security.cors.enable === true) {
+                const cors_config = config.api.security.cors;
+                api_server.enableCors({
+                    origin: cors_config.origin,
+                    methods: cors_config.methods,
+                    allowedHeaders: cors_config.allowed_headers,
+                    exposedHeaders: cors_config.exposed_headers,
+                    credentials: cors_config.credentials,
+                    maxAge: cors_config.max_age,
+                    preflightContinue: cors_config.preflight_continue,
+                    optionsSuccessStatus: cors_config.options_success_status
+                });
+            }
             
             await api_server.listen(config.api.port, config.api.hostname);
 
@@ -37,6 +51,20 @@ const bootstrap = async () => {
             });
 
             static_server.setGlobalPrefix(config.web.prefix);
+
+            if (config.web.security.cors.enable === true) {
+                const cors_config = config.web.security.cors;
+                static_server.enableCors({
+                    origin: cors_config.origin,
+                    methods: cors_config.methods,
+                    allowedHeaders: cors_config.allowed_headers,
+                    exposedHeaders: cors_config.exposed_headers,
+                    credentials: cors_config.credentials,
+                    maxAge: cors_config.max_age,
+                    preflightContinue: cors_config.preflight_continue,
+                    optionsSuccessStatus: cors_config.options_success_status
+                });
+            }
             
             await static_server.listen(config.web.port, config.web.hostname);
 

@@ -22,6 +22,16 @@
             ttl = 30
             limit = 10
             ignore_agents = []
+        [api.security.cors]                                         # настройка CORS (пакет https://github.com/expressjs/cors)
+            enable = false
+            origin = "*"
+            methods = ["GET","HEAD","PUT","PATCH","POST","DELETE"]
+            allowed_headers = []
+            exposed_headers = []
+            credentials = false
+            preflight_continue = false
+            options_success_status = 204
+            max_age = 0
 
 [web]
     enable = false          # активация Web сервера

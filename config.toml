@@ -15,3 +15,13 @@
     [web.security]
         [web.security.helmet]
             enable = true
+        [api.security.cors]
+            enable = true
+            origin = "*"
+            methods = ["GET","HEAD","PUT","PATCH","POST","DELETE"]
+            allowed_headers = []
+            exposed_headers = []
+            credentials = false
+            preflight_continue = false
+            options_success_status = 204
+            max_age = 0

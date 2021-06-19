@@ -163,11 +163,97 @@
                                 "limit",
                                 "ignore_agents"
                             ]
+                        },
+                        "cors": {
+                            "type": "object",
+                            "default": {},
+                            "env": "TEMPLATE_API_SECURITY_CORS",
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_API_SECURITY_CORS_ENABLE"
+                                },
+                                "origin": {
+                                    "type": "string",
+                                    "default": "*",
+                                    "env": "TEMPLATE_API_SECURITY_CORS_ORIGIN",
+                                    "minLength": 1,
+                                    "maxLength": 256
+                                },
+                                "methods": {
+                                    "type": "array",
+                                    "default": ["GET","HEAD","PUT","PATCH","POST","DELETE"],
+                                    "env": "TEMPLATE_API_SECURITY_CORS_METHODS",
+                                    "items": {
+                                        "type": "string",
+                                        "enum": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 6
+                                },
+                                "allowed_headers": {
+                                    "type": "array",
+                                    "default": [],
+                                    "env": "TEMPLATE_API_SECURITY_CORS_ALLOWED_HEADERS",
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 128
+                                    },
+                                    "minItems": 0
+                                },
+                                "exposed_headers": {
+                                    "type": "array",
+                                    "default": [],
+                                    "env": "TEMPLATE_API_SECURITY_CORS_EXPOSED_HEADERS",
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 128
+                                    },
+                                    "minItems": 0
+                                },
+                                "credentials": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_API_SECURITY_CORS_CREDENTIALS"
+                                },
+                                "preflight_continue": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_API_SECURITY_CORS_PREFLIGHT_CONTINUE"
+                                },
+                                "options_success_status": {
+                                    "type": "integer",
+                                    "default": 204,
+                                    "env": "TEMPLATE_API_SECURITY_CORS_OPTIONS_SUCCESS_STATUS",
+                                    "minimum": 1
+                                },
+                                "max_age": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "env": "TEMPLATE_API_SECURITY_CORS_MAX_AGE",
+                                    "minimum": 0
+                                }
+                            },
+                            "required": [
+                                "enable",
+                                "origin",
+                                "methods",
+                                "allowed_headers",
+                                "exposed_headers",
+                                "credentials",
+                                "preflight_continue",
+                                "options_success_status",
+                                "max_age"
+                            ]
                         }
                     },
                     "required": [
                         "helmet",
-                        "rate"
+                        "rate",
+                        "cors"
                     ]
                 }
             },
@@ -312,11 +398,97 @@
                                 "limit",
                                 "ignore_agents"
                             ]
+                        },
+                        "cors": {
+                            "type": "object",
+                            "default": {},
+                            "env": "TEMPLATE_WEB_SECURITY_CORS",
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_ENABLE"
+                                },
+                                "origin": {
+                                    "type": "string",
+                                    "default": "*",
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_ORIGIN",
+                                    "minLength": 1,
+                                    "maxLength": 256
+                                },
+                                "methods": {
+                                    "type": "array",
+                                    "default": ["GET","HEAD","PUT","PATCH","POST","DELETE"],
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_METHODS",
+                                    "items": {
+                                        "type": "string",
+                                        "enum": ["GET","HEAD","PUT","PATCH","POST","DELETE"]
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 6
+                                },
+                                "allowed_headers": {
+                                    "type": "array",
+                                    "default": [],
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_ALLOWED_HEADERS",
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 128
+                                    },
+                                    "minItems": 0
+                                },
+                                "exposed_headers": {
+                                    "type": "array",
+                                    "default": [],
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_EXPOSED_HEADERS",
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 128
+                                    },
+                                    "minItems": 0
+                                },
+                                "credentials": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_CREDENTIALS"
+                                },
+                                "preflight_continue": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_PREFLIGHT_CONTINUE"
+                                },
+                                "options_success_status": {
+                                    "type": "integer",
+                                    "default": 204,
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_OPTIONS_SUCCESS_STATUS",
+                                    "minimum": 1
+                                },
+                                "max_age": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "env": "TEMPLATE_WEB_SECURITY_CORS_MAX_AGE",
+                                    "minimum": 0
+                                }
+                            },
+                            "required": [
+                                "enable",
+                                "origin",
+                                "methods",
+                                "allowed_headers",
+                                "exposed_headers",
+                                "credentials",
+                                "preflight_continue",
+                                "options_success_status",
+                                "max_age"
+                            ]
                         }
                     },
                     "required": [
                         "helmet",
-                        "rate"
+                        "rate",
+                        "cors"
                     ]
                 }
             },
