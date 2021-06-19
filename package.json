@@ -15,10 +15,10 @@
         "start": "node ./dist/app.js --config ./config.toml",
         "start:dev": "ts-node ./src/app.ts --config ./config.toml",
         "test": "jest --config ./tests/e2e.config.json",
-        "docker:build": "npm run build && files-copier -e docker:build && ts-node ./docker-build/build.ts",
-        "docker:push:version": "ts-node ./docker-build/push_version.ts",
-        "docker:push:latest": "ts-node ./docker-build/push_latest.ts",
-        "docker:tag": "ts-node ./docker-build/tag.ts",
+        "docker:build": "npm run build && files-copier -e docker:build && node ./docker-build/build.js",
+        "docker:push:version": "node ./docker-build/push_version.js",
+        "docker:push:latest": "node ./docker-build/push_latest.js",
+        "docker:tag": "node ./docker-build/tag.js",
         "docker": "npm run docker:build && npm run docker:tag && npm run docker:push:version && npm run docker:push:latest"
     },
     "repository": {
