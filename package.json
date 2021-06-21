@@ -73,7 +73,8 @@
             "keywords",
             "homepage",
             "bugs",
-            "copier"
+            "copier",
+            "config"
         ]
     },
     "copier": {
