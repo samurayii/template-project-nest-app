@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "sourceMap": false,
         "paths": {
             "*": [
                 "./node_modules/*",
@@ -17,7 +18,7 @@
         "outDir": "./dist",
         "baseUrl": "./",
         "rootDir": "./src",
-        "typeRoots": ["./src/types"]
+        "typeRoots": ["./src/types","./node_modules/@types"]
     },
     "include": ["./src/**/*"]
 }
